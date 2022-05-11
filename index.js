@@ -16,16 +16,6 @@ buttons.forEach((button, index) => {
     button.innerText = answers[index].classList.contains('hidden') ? 'Show Answer' : 'Hide Answer';
   });
 });
-// ** --- Variante 2 with parentNode --- **
-// buttons.forEach((button) => {
-//   button.addEventListener("click", () => {
-//     const answer = button.parentNode.querySelector(".question-card__answer");
-//     answer.classList.toggle("hidden");
-//     button.innerText = answer.classList.contains("hidden")
-//       ? "Show Answer"
-//       : "Hide Answer";
-//   });
-// });
 
 // 3. Implement Counter for create form inputs
 const inputElements = document.querySelectorAll('[data-js="inputElement"]');
