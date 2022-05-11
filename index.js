@@ -1,45 +1,59 @@
-// PART 1 -- EXERCISE 1
-const bookmark = document.querySelector('[data-js="bookmark"]');
-
-bookmark.addEventListener("click", () => {
-  bookmark.classList.toggle("card__bookmark--active");
+// 1. Toggle all bookmarks with forEach
+const bookmarks = document.querySelectorAll('[data-js="bookmark"]');
+bookmarks.forEach((bookmark) => {
+  bookmark.addEventListener('click', () => {
+    bookmark.classList.toggle('card__bookmark--active');
+  });
 });
 
-// PART 1 -- EXERCISE 2 / 3
-// const showButton = document.querySelector('[data-js="show__button"]');
-// const answerElement = document.querySelector('[data-js="answer"]');
-
-// showButton.addEventListener("click", () => {
-//   answerElement.toggleAttribute("hidden");
+// 2. Toggle all answers with forEach
+const buttons = document.querySelectorAll('[data-js="show__button"]');
+// ** --- Variante 1 --- **
+const answers = document.querySelectorAll('.question-card__answer');
+buttons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    answers[index].classList.toggle('hidden');
+    button.innerText = answers[index].classList.contains('hidden') ? 'Show Answer' : 'Hide Answer';
+  });
+});
+// ** --- Variante 2 with parentNode --- **
+// buttons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     const answer = button.parentNode.querySelector(".question-card__answer");
+//     answer.classList.toggle("hidden");
+//     button.innerText = answer.classList.contains("hidden")
+//       ? "Show Answer"
+//       : "Hide Answer";
+//   });
 // });
 
-// PART 1 -- EXERCISE  3
-// const showButton = document.querySelector('[data-js="show__button"]');
-// const hideButton = document.querySelector('[data-js="hide__button"]');
-// const answerElement = document.querySelector('[data-js="answer"]');
+// 3. Implement Counter for create form inputs
+const inputElements = document.querySelectorAll('[data-js="inputElement"]');
 
-// showButton.addEventListener("click", () => {
-//   hideButton.classList.remove("hide");
-//   showButton.classList.add("hide");
-//   answerElement.toggleAttribute("hidden");
-// });
+inputElements.forEach((element) => {
+  const inputField = element.querySelector('[data-js="inputTextarea"]');
+  const counterElement = element.querySelector('[data-js="form-counter"]');
 
-// hideButton.addEventListener("click", () => {
-//   hideButton.classList.add("hide");
-//   showButton.classList.remove("hide");
-//   answerElement.toggleAttribute("hidden");
-// });
+  console.log(inputField);
 
-// PART 1 -- EXERCISE  3 --optional Solution with single Button
-const showButton = document.querySelector('[data-js="show__button"]');
-const answerElement = document.querySelector('[data-js="answer"]');
+  inputField.addEventListener('input', () => {
+    inputField.value.length >= 0
+      ? (counterElement.textContent = `${inputField.value.length} characters`)
+      : (counterElement.textContent = '');
+  });
+});
 
-showButton.addEventListener("click", () => {
-  if (showButton.textContent === "Show") {
-    answerElement.toggleAttribute("hidden");
-    showButton.textContent = "Hide";
-  } else {
-    showButton.textContent = "Show";
-    answerElement.toggleAttribute("hidden");
-  }
+// 4. Navigation Singale Page App (SPA)
+const navElements = document.querySelectorAll('a');
+const pages = document.querySelectorAll('.page');
+
+navElements.forEach((navElement) => {
+  navElement.addEventListener('click', (event) => {
+    pages.forEach((page) => {
+      page.classList.remove('active');
+    });
+    const hrefAttribute = event.target.getAttribute('href');
+    const activePage = document.querySelector(hrefAttribute);
+    activePage.classList.add('active');
+  });
 });

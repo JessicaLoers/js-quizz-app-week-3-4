@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-
+    <script src="./index.js" defer></script>
     <link rel="stylesheet" href="css/styles.css" />
     <title>create</title>
   </head>
@@ -24,40 +24,45 @@
     <header class="header-create">
       <h1>Create a Question</h1>
     </header>
+    <main>
+      <form class="form__container">
+        <div data-js="inputElement">
+          <label for="user_question">
+            Your question:
+            <p data-js="form-counter"></p>
+          </label>
+          <textarea
+            data-js="inputTextarea"
+            name="question"
+            id="question"
+            required
+          ></textarea>
+        </div>
+        <div data-js="inputElement">
+          <label for="question_answer">
+            Your anwser:
+            <p data-js="form-counter"></p
+          ></label>
+          <textarea
+            data-js="inputTextarea"
+            name="answer"
+            id="answer"
+            required
+          ></textarea>
+        </div>
 
-    <main class="create-question">
-      <form method="GET" class="question">
-        <label for="question">Your Quiz Answer</label>
-        <textarea name="question" id="question" cols="40" rows="10">
-Add the answer of your question</textarea
-        >
+        <div data-js="inputElement">
+          <label for="tags"
+            >Tags:
+            <p data-js="form-counter"></p
+          ></label>
+          <input data-js="inputTextarea" type="text" name="tags" id="tags" />
+        </div>
+
+        <button>Submit</button>
       </form>
-
-      <form method="GET" class="answer">
-        <label for="answer">Your Quiz Answer</label>
-        <textarea name="answer" id="answer" cols="40" rows="10">
-Add the answer of your question</textarea
-        >
-      </form>
-
-      <div class="create-categories">
-        <label for="sience">Wissenschaft</label>
-        <input type="checkbox" id="sience" name="cat-sience" value="sience" />
-        
-        <label for="sport">Sport</label>
-        <input type="checkbox" id="sports" name="cat-sports" value="sports" />
-       
-        <label for="politics">Politik</label>
-        <input type="checkbox" id="politics" name="cat-politics" value="politics"/>
-        
-        <label for="nature">Natur</label>
-        <input type="checkbox" id="nature" name="cat-nature" value="nature" />
-      </div>
-
-      <section class="create-question__button">
-        <button>Abschicken</button>
-      </section>
     </main>
+
     <footer class="footer-create">
       <a href="index.html">
         <span class="material-icons icons_footer home-icon">home</span>
