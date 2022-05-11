@@ -96,9 +96,16 @@ h1 {
   background-color: var(--profile-primary);
 }
 
-
 .card__tags li {
   color: #fcfcfc;   
   padding: 5px;
   width: 50px;
+}
+
+.page {
+  display: none;
+}
+
+.active {
+  display: block;
 }

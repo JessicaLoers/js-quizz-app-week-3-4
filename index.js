@@ -34,8 +34,6 @@ inputElements.forEach((element) => {
   const inputField = element.querySelector('[data-js="inputTextarea"]');
   const counterElement = element.querySelector('[data-js="form-counter"]');
 
-  console.log(inputField);
-
   inputField.addEventListener('input', () => {
     inputField.value.length >= 0
       ? (counterElement.textContent = `${inputField.value.length} characters`)
@@ -43,8 +41,8 @@ inputElements.forEach((element) => {
   });
 });
 
-// 4. Navigation Singale Page App (SPA)
-const navElements = document.querySelectorAll('a');
+// 4. Navigation Single Page App (SPA)
+const navElements = document.querySelectorAll('[data-js="nav-link"]');
 const pages = document.querySelectorAll('.page');
 
 navElements.forEach((navElement) => {
@@ -52,7 +50,7 @@ navElements.forEach((navElement) => {
     pages.forEach((page) => {
       page.classList.remove('active');
     });
-    const hrefAttribute = event.target.getAttribute('href');
+    const hrefAttribute = event.target.parentElement.getAttribute('href');
     const activePage = document.querySelector(hrefAttribute);
     activePage.classList.add('active');
   });
