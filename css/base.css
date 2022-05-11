@@ -104,6 +104,7 @@ h1 {
 
 .page {
   display: none;
+  padding-top: 10em;
 }
 
 .active {
