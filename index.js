@@ -1,47 +1,16 @@
-// 1. Toggle all bookmarks with forEach
+import bookmark from './javascript/bookmark.js';
+import counter from './javascript/counter.js';
+import toggleAnswer from './javascript/toggleAnswer.js';
+import navigation from './javascript/navigation.js';
+
 const bookmarks = document.querySelectorAll('[data-js="bookmark"]');
-bookmarks.forEach((bookmark) => {
-  bookmark.addEventListener('click', () => {
-    bookmark.classList.toggle('card__bookmark--active');
-  });
-});
+bookmarks.forEach(bookmark);
 
-// 2. Toggle all answers with forEach
-const buttons = document.querySelectorAll('[data-js="show__button"]');
-// ** --- Variante 1 --- **
-const answers = document.querySelectorAll('.question-card__answer');
-buttons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    answers[index].classList.toggle('hidden');
-    button.innerText = answers[index].classList.contains('hidden') ? 'Show Answer' : 'Hide Answer';
-  });
-});
+const buttons = document.querySelectorAll('[data-js="card__button"]');
+buttons.forEach(toggleAnswer);
 
-// 3. Implement Counter for create form inputs
 const inputElements = document.querySelectorAll('[data-js="inputElement"]');
+inputElements.forEach(counter);
 
-inputElements.forEach((element) => {
-  const inputField = element.querySelector('[data-js="inputTextarea"]');
-  const counterElement = element.querySelector('[data-js="form-counter"]');
-
-  inputField.addEventListener('input', () => {
-    inputField.value.length >= 0
-      ? (counterElement.textContent = `${inputField.value.length} characters`)
-      : (counterElement.textContent = '');
-  });
-});
-
-// 4. Navigation Single Page App (SPA)
 const navElements = document.querySelectorAll('[data-js="nav-link"]');
-const pages = document.querySelectorAll('.page');
-
-navElements.forEach((navElement) => {
-  navElement.addEventListener('click', (event) => {
-    pages.forEach((page) => {
-      page.classList.remove('active');
-    });
-    const hrefAttribute = event.target.parentElement.getAttribute('href');
-    const activePage = document.querySelector(hrefAttribute);
-    activePage.classList.add('active');
-  });
-});
+navElements.forEach(navigation);
